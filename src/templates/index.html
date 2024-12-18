@@ -10,23 +10,23 @@
 
     <style>
         body {
-            font-family: 'FiraCode', monospace; /* Impostato il font FiraCode */
-            color: white; /* Tutte le scritte bianche */
-            background-color: #1e1e1e; /* Sfondo scuro per il contrasto */
+            font-family: 'FiraCode', monospace;
+            color: white;
+            background-color: #1e1e1e;
             margin: 0;
             padding: 0;
         }
 
         h1, h2 {
             text-align: center;
-            color: white; /* Colore bianco per il titolo */
+            color: white;
         }
 
         #continue-prompt button {
             display: inline-block;
             margin: 0 10px;
             color: white;
-            background-color: #444; /* Colore scuro per i pulsanti */
+            background-color: #444;
             border: 1px solid #666;
         }
 
@@ -37,23 +37,23 @@
             max-height: 400px;
             overflow-y: auto;
             margin-bottom: 20px;
-            background-color: #333; /* Sfondo scuro */
+            background-color: #333;
         }
 
         .message {
             margin-bottom: 10px;
-            font-family: 'FiraCode', monospace; /* Uso il font FiraCode */
-            color: white; /* Tutti i messaggi sono bianchi */
+            font-family: 'FiraCode', monospace;
+            color: white;
         }
 
         .message.user {
             text-align: right;
-            color: #ffffff; /* Blu chiaro per i messaggi utente */
+            color: #ffffff;
         }
 
         .message.agent {
             text-align: left;
-            color: #A5D6D9; /* Verde chiaro per i messaggi dell'agente */
+            color: #A5D6D9;
         }
 
         .message-label {
@@ -97,31 +97,25 @@
 <body>
     <h1>Agent MIRA</h1>
     <div class="container">
-        <!-- Chat box -->
         <div id="chat-box"></div>
 
-        <!-- Prompt box -->
         <div id="prompt-box">
             <textarea id="userPrompt" placeholder="Enter your query here..." onkeydown="checkEnter(event)"></textarea>
             <button id="askButton" onclick="submitPrompt()">Submit</button>
         </div>
 
-        <!-- Loading text -->
         <div id="loading-text" style="display: none;">Loading...</div>
 
-        <!-- Loading bar -->
         <div id="loading-bar" style="display: none;">
             <div></div>
         </div>
 
-        <!-- Continue prompt -->
         <div id="continue-prompt" style="display: none;">
             <p>Do you want to continue?</p>
             <button onclick="handleContinue('Yes')">Yes</button>
             <button onclick="handleContinue('No')">No</button>
         </div>
 
-        <!-- End screen -->
         <div id="end-screen" style="display: none;">
             <h2>Travel booked, have a nice trip! :)</h2>
             <button onclick="restartSession()">Book another trip</button>
@@ -129,7 +123,7 @@
     </div>
 
     <script>
-        let lastResponse = ''; // Global variable to store the last response
+        let lastResponse = '';
 
         async function submitPrompt() {
             const prompt = document.getElementById('userPrompt').value.trim();
@@ -143,16 +137,12 @@
                 return;
             }
 
-            // Add user's message to the chat box
             const userMessage = document.createElement('div');
             userMessage.className = 'message user';
             userMessage.innerHTML = '<span class="message-label">User:</span> ' + prompt;
             chatBox.appendChild(userMessage);
-
-            // Scroll to the bottom of the chat box
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Reset UI
             document.getElementById('continue-prompt').style.display = 'none';
             document.getElementById('end-screen').style.display = 'none';
 
@@ -173,24 +163,17 @@
             try {
                 const res = await fetch('/ask', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ query: prompt, session_id: 'default_session' })
                 });
 
                 const data = await res.json();
-
-                // Store the response in the global variable
                 lastResponse = data.response;
 
-                // Add agent's response to the chat box
                 const agentMessage = document.createElement('div');
                 agentMessage.className = 'message agent';
                 agentMessage.innerHTML = '<span class="message-label">Mira:</span> ' + data.response;
                 chatBox.appendChild(agentMessage);
-
-                // Scroll to the bottom of the chat box
                 chatBox.scrollTop = chatBox.scrollHeight;
 
                 if (data.show_continue_prompt) {
@@ -215,30 +198,26 @@
 
         function checkEnter(event) {
             if (event.key === 'Enter') {
-                if (event.shiftKey) {
-                    // Allow new line with Shift + Enter
-                    return; // Default behavior: go to the next line
-                } else {
-                    // Submit on Enter
-                    event.preventDefault();
-                    submitPrompt();
-                }
+                if (event.shiftKey) return;
+                event.preventDefault();
+                submitPrompt();
             }
         }
 
         async function handleContinue(choice) {
             const chatBox = document.getElementById('chat-box');
             const promptBox = document.getElementById('prompt-box');
+            const userPrompt = document.getElementById('userPrompt');
 
             try {
                 const res = await fetch('/continue', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         choice: choice,
-                        last_response: lastResponse
+                        query: userPrompt.value.trim(),
+                        last_response: lastResponse,
+                        session_id: 'default_session'
                     })
                 });
 
@@ -246,13 +225,8 @@
                 document.getElementById('continue-prompt').style.display = 'none';
 
                 if (choice === 'Yes') {
-                    const agentMessage = document.createElement('div');
-                    agentMessage.className = 'message agent';
-                    agentMessage.innerHTML = '<span class="message-label">Mira:</span> ' + data.response;
-                    chatBox.appendChild(agentMessage);
-                    chatBox.scrollTop = chatBox.scrollHeight;
-
                     promptBox.style.display = 'block';
+                    userPrompt.value = ''; // Reset the input box
                 } else if (data.show_end_screen) {
                     document.getElementById('end-screen').style.display = 'block';
                 } else {
@@ -266,7 +240,7 @@
         function restartSession() {
             document.getElementById('end-screen').style.display = 'none';
             document.getElementById('prompt-box').style.display = 'block';
-            document.getElementById('chat-box').innerHTML = ''; // Clear chat history
+            document.getElementById('chat-box').innerHTML = '';
             document.getElementById('userPrompt').value = '';
         }
     </script>

@@ -111,17 +111,13 @@ def continue_route():
     choice = data.get('choice')
     user_prompt = data.get('query', '')
     session_id = data.get('session_id', 'default_session')
-    last_response = data.get('last_response')  # Corrected for consistency with the client
-    is_continue = data.get('is_continue', False)
+    last_response = data.get('last_response')
 
-    if not last_response and not is_continue:  # Ensure last_response is present if continuing
+    if not last_response:
         return jsonify({"error": "No response received from the previous request"}), 400
 
-    # Save response based on whether it's continuing or not
-    if is_continue:
-        save_response(session_id, user_prompt, last_response)
-    else:
-        save_response(session_id, user_prompt, "Initial response")
+    # Salvataggio della risposta finale
+    save_response(session_id, user_prompt, last_response)
 
     with open("json_docs/conversation.json", "w", encoding="utf-8") as f:
         json.dump(response_store, f, ensure_ascii=False, indent=4)
