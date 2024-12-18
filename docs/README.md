@@ -183,7 +183,7 @@ Steps to install and run the project:
    ```
    
    ```bash
-   pip install flask langchain
+   pip install flask langchain langchain-ollama
    ```
    
    **Note**: Ensure that Ollama is installed locally for the project to function correctly. You can download and configure it by following the instructions provided in the official Ollama documentation.
