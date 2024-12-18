@@ -1,0 +1,4 @@
+{
+  "goal_tree": "json_docs/goal_tree.json",
+  "prompts": "json_docs/prompts.json"
+}

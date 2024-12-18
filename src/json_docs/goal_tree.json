@@ -1,0 +1,203 @@
+{
+  "goals": [
+    {
+      "goal_id": "root",
+      "goal_type": "FinalGoal",
+      "goal_name": "Sale trip success",
+      "description": "The sale is considered successful if all goals are met (destination, budget, experience, duration)",
+      "status": "uncompleted",
+      "information": "",
+      "score": "",
+      "children": [
+        {
+          "goal_id": "location_goal",
+          "goal_type": "CompositeGoal",
+          "goal_link": "AND",
+          "goal_name": "Destination selection",
+          "description": "Does the travel destination meet specific requirements?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "beach_location",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Beach destination",
+              "description": "Does the user want the destination to be a seaside location?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "mountain_location",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Mountain destination",
+              "description": "Is the destination a mountain location?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "city_location",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "City destination",
+              "description": "Is the destination a city?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "cultural_location",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Cultural destination",
+              "description": "Is the user interested in cultural locations, like museums or art galleries?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        },
+        {
+          "goal_id": "budget_goal",
+          "goal_type": "CompositeGoal",
+          "goal_link": "AND",
+          "goal_name": "Budget requirements",
+          "description": "Must the trip cost remain within the planned budget?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "transport_budget",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "AND",
+              "goal_name": "Transport budget",
+              "description": "Can the cost of transportation be estimated?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "accomodation_budget",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "AND",
+              "goal_name": "Accommodation budget",
+              "description": "Can the cost of accommodation (hotel/apartment) be estimated?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "experience_budget",
+              "goal_type": "CompositeGoal",
+              "goal_link": "OR",
+              "goal_name": "Experience budget",
+              "description": "Can the cost of possible experiences (e.g., excursions, snorkeling, etc.) be estimated?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        },
+        {
+          "goal_id": "experience_goal",
+          "goal_type": "QualityGoal",
+          "goal_link": "AND",
+          "goal_name": "Client experience",
+          "description": "Can the trip offer various extras to the user?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "luxury_experience",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Luxurious experience",
+              "description": "Can a luxurious experience with high-quality services and accommodations be offered?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "work_experience",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Work experience",
+              "description": "Can a work experience be offered to the user?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "relax_experience",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Relax experience",
+              "description": "Can a relaxing experience be offered to the user?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "adventure_experience",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Adventure experience",
+              "description": "Can the trip focus on adventure, with activities such as hiking or exploring?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        },
+        {
+          "goal_id": "duration_goal",
+          "goal_type": "CompositeGoal",
+          "goal_link": "AND",
+          "goal_name": "Travel length",
+          "description": "Must the trip duration match the client's preferences?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "short_duration",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Short trip",
+              "description": "Should the trip last a short period (1-3 days)?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "medium_duration",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Medium trip",
+              "description": "Should the trip last a medium period (4-6 days)?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "long_duration",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Long trip",
+              "description": "Should the trip last a longer period (7+ days)?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

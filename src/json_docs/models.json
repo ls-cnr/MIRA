@@ -1,0 +1,27 @@
+{
+  "_comment": "Please insert in 'selected_model' and in 'models' the llm model you want to use. In 'models' insert also the model parameters.",
+  "selected_model": "llama3.2",
+  "models": {
+    "llama3.2": {
+      "model": "llama3.2",
+      "temperature": 0.1,
+      "repeat_penalty": 1.2,
+      "top_p": 0.9,
+      "num_ctx": 4096
+    },
+    "llama3.1": {
+      "model": "llama3.1",
+      "temperature": 0.1,
+      "repeat_penalty": 1.2,
+      "top_p": 0.9,
+      "num_ctx": 4096
+    },
+    "llama2": {
+      "model": "llama2",
+      "temperature": 0.1,
+      "repeat_penalty": 1.2,
+      "top_p": 0.9,
+      "num_ctx": 4096
+    }
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "goals": [
+    {
+      "goal_id": "root",
+      "goal_type": "FinalGoal",
+      "goal_name": "University orientation success",
+      "description": "The orientation is considered successful if all goals are met (course selection, accommodation, budget, experience, duration)",
+      "status": "uncompleted",
+      "information": "",
+      "score": "",
+      "children": [
+        {
+          "goal_id": "course_goal",
+          "goal_type": "CompositeGoal",
+          "goal_link": "AND",
+          "goal_name": "Course selection",
+          "description": "Does the student select the appropriate courses for their program?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "major_courses",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Major-specific courses",
+              "description": "Has the student selected courses related to their major?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "elective_courses",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Elective courses",
+              "description": "Has the student selected elective courses of interest?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "prerequisite_courses",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Prerequisite courses",
+              "description": "Has the student enrolled in necessary prerequisite courses?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        },
+        {
+          "goal_id": "accommodation_goal",
+          "goal_type": "CompositeGoal",
+          "goal_link": "AND",
+          "goal_name": "Accommodation arrangements",
+          "description": "Has the student secured appropriate accommodation for their stay?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "on_campus_accommodation",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "On-campus accommodation",
+              "description": "Has the student arranged for on-campus housing?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "off_campus_accommodation",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Off-campus accommodation",
+              "description": "Has the student arranged for off-campus housing?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        },
+        {
+          "goal_id": "budget_goal",
+          "goal_type": "CompositeGoal",
+          "goal_link": "AND",
+          "goal_name": "Budget management",
+          "description": "Does the student have a budget for their university expenses?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "tuition_budget",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "AND",
+              "goal_name": "Tuition budget",
+              "description": "Can the student estimate the tuition fees?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "living_expenses_budget",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "AND",
+              "goal_name": "Living expenses budget",
+              "description": "Can the student estimate living expenses (food, transportation, etc.)?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "miscellaneous_budget",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Miscellaneous budget",
+              "description": "Can the student estimate other expenses (books, activities, etc.)?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        },
+        {
+          "goal_id": "experience_goal",
+          "goal_type": "QualityGoal",
+          "goal_link": "AND",
+          "goal_name": "Student experience",
+          "description": "Can the student participate in extracurricular activities or other experiences?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "social_experience",
+              "goal_type": "CompositeGoal",
+              "goal_link": "OR",
+              "goal_name": "Social experience",
+              "description": "Can the student engage in social activities, such as clubs or events?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "work_experience",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Work experience",
+              "description": "Can the student participate in internships or part-time work?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "academic_experience",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Academic experience",
+              "description": "Can the student participate in research or academic projects?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        },
+        {
+          "goal_id": "duration_goal",
+          "goal_type": "CompositeGoal",
+          "goal_link": "AND",
+          "goal_name": "Program duration",
+          "description": "Does the student need to complete the program within a certain time frame?",
+          "status": "uncompleted",
+          "score": "",
+          "information": "",
+          "children": [
+            {
+              "goal_id": "short_program_duration",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Short program",
+              "description": "Should the program be completed in a short period (1-2 years)?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "medium_program_duration",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Medium program",
+              "description": "Should the program be completed in a medium period (3-4 years)?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            },
+            {
+              "goal_id": "long_program_duration",
+              "goal_type": "EpistemicGoal",
+              "goal_link": "OR",
+              "goal_name": "Long program",
+              "description": "Should the program take more than 4 years to complete?",
+              "status": "uncompleted",
+              "score": "",
+              "information": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
